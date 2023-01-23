@@ -21,31 +21,27 @@ const Home = () => {
   const [searchTimeout, setSearchTimeout] = useState(null)
   const [searchedResults, setSearchedResults] = useState(null)
 
-
   const fetchPosts = async () => {
     setLoading(true);
+
     try {
-      const response = await fetch("https://dall-e-6kde.onrender.com", {
-        method: "GET",
+      const response = await fetch('https://dall-e-6kde.onrender.com/api/v1/post', {
+        method: 'GET',
         headers: {
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json',
         },
-      })
+      });
 
-      if(response.ok) {
+      if (response.ok) {
         const result = await response.json();
-
-        // .reverse to show the latest post first!
-        setAllPosts(result.data.reverse())
+        setAllPosts(result.data.reverse());
       }
-
-
     } catch (err) {
-      alert(err)
+      alert(err);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
   
   // ----- INITIAL FETCHING FROM BACKEND -----
   useEffect(() => {

@@ -21,7 +21,7 @@ const generateImage = async () => {
     if (form.prompt) {
       try {
         setGeneratingImg(true);
-        const response = await fetch("https://dall-e-6kde.onrender.com", {
+        const response = await fetch("https://dall-e-6kde.onrender.com/api/v1/dalle", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ const generateImage = async () => {
       setLoading(true);
 
       try {
-        const response = await fetch("https://dall-e-6kde.onrender.com", {
+        const response = await fetch("https://dall-e-6kde.onrender.com/api/v1/post", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
